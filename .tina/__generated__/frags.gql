@@ -1,4 +1,10 @@
 fragment PostsParts on Posts {
+  gallery {
+    __typename
+    title
+    image
+    size
+  }
   title
   heroImg
   excerpt

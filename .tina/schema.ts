@@ -14,6 +14,42 @@ export default defineSchema({
       format: "mdx",
       fields: [
         {
+          label: "Image Gallery",
+          name: "gallery",
+          type: "object",
+          list: true,
+          ui: {
+            itemProps: (item) => {
+              return { label: item?.title };
+            },
+            defaultItem: {
+              title: "Image123"
+            },
+            validate: (value) => {
+              if (value.length > 5) {
+                return 'Title can not be more then 5 characters long'
+              }
+            },
+          },
+          fields: [
+            {
+              label: "Title",
+              name: "title",
+              type: "string",
+              ui: {
+                defaultValue: "A new title",
+              },
+            },
+            { label: "Image", name: "image", type: "image" },
+            {
+              label: "Size",
+              name: "size",
+              type: "string",
+              options: ["sm", "med", "lg", "xl"],
+            },
+          ],
+        },
+        {
           type: "string",
           label: "Title",
           name: "title",

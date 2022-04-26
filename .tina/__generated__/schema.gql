@@ -84,9 +84,16 @@ type Collection {
 
 union DocumentNode = PostsDocument | GlobalDocument | AuthorsDocument | PagesDocument
 
+type PostsGallery {
+  title: String
+  image: String
+  size: String
+}
+
 union PostsAuthorDocument = AuthorsDocument
 
 type Posts {
+  gallery: [PostsGallery]
   title: String
   heroImg: String
   excerpt: JSON
@@ -299,7 +306,14 @@ input DocumentMutation {
   pages: PagesMutation
 }
 
+input PostsGalleryMutation {
+  title: String
+  image: String
+  size: String
+}
+
 input PostsMutation {
+  gallery: [PostsGalleryMutation]
   title: String
   heroImg: String
   excerpt: JSON
